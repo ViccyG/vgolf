@@ -11,141 +11,244 @@
 :root{
   --green:#0f3d2e;
   --green2:#1f8a63;
-  --light:#f4f7f6;
+  --bg:#f4f7f6;
   --text:#1c1c1c;
+  --muted:#4e5a55;
+  --card:#ffffff;
+  --shadow:0 12px 35px rgba(0,0,0,0.08);
+  --radius:14px;
 }
 
 *{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
 body{
   margin:0;
   font-family:'Inter', sans-serif;
-  background:var(--light);
+  background: radial-gradient(900px 500px at 10% -10%, rgba(31,138,99,0.18), transparent 55%),
+              radial-gradient(800px 450px at 90% 0%, rgba(15,61,46,0.14), transparent 60%),
+              var(--bg);
   color:var(--text);
-  line-height:1.6;
+  line-height:1.65;
 }
 
+/* NAV */
 .nav{
   position:fixed;
   width:100%;
   top:0;
-  background:white;
-  border-bottom:1px solid #eee;
+  background:rgba(255,255,255,0.9);
+  backdrop-filter: blur(10px);
+  border-bottom:1px solid rgba(0,0,0,0.07);
   z-index:100;
 }
-
 .nav-inner{
   max-width:1200px;
   margin:auto;
   display:flex;
   justify-content:space-between;
   align-items:center;
-  padding:18px 20px;
+  padding:14px 18px;
+  gap:12px;
 }
-
 .logo{
   font-weight:800;
   color:var(--green);
+  letter-spacing:0.3px;
+  white-space:nowrap;
 }
-
 .nav a{
   text-decoration:none;
-  color:#444;
-  margin-left:20px;
-  font-weight:600;
-  font-size:14px;
+  color:#3f4743;
+  margin-left:14px;
+  font-weight:700;
+  font-size:13px;
+  padding:8px 10px;
+  border-radius:12px;
+}
+.nav a:hover{
+  background:rgba(31,138,99,0.10);
+  color:var(--green);
 }
 
+/* HERO */
 .hero{
-  height:90vh;
+  height:92vh;
   background:url('driver.jpg') center/cover no-repeat;
   display:flex;
-  align-items:center;
+  align-items:flex-end;
   justify-content:center;
-  text-align:center;
+  text-align:left;
   color:white;
   position:relative;
 }
-
 .hero::after{
   content:"";
   position:absolute;
   inset:0;
-  background:linear-gradient(180deg, rgba(0,0,0,0.35), rgba(0,0,0,0.75));
+  background:linear-gradient(180deg, rgba(0,0,0,0.15), rgba(0,0,0,0.78));
 }
-
 .hero-content{
   position:relative;
   z-index:2;
-  max-width:860px;
-  padding:0 20px;
+  max-width:1100px;
+  width:100%;
+  padding:0 18px 48px;
 }
-
+.badge{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:8px 12px;
+  border-radius:999px;
+  background:rgba(255,255,255,0.12);
+  border:1px solid rgba(255,255,255,0.18);
+  font-weight:700;
+  font-size:13px;
+  margin-bottom:14px;
+}
+.dot{
+  width:10px;height:10px;border-radius:999px;
+  background:linear-gradient(135deg,var(--green2),#b7ffda);
+}
 .hero h1{
   font-size:48px;
-  margin:0 0 16px;
+  margin:0 0 12px;
+  line-height:1.05;
+  letter-spacing:-0.7px;
 }
-
 .hero p{
-  font-size:20px;
-  margin:0;
+  font-size:18px;
+  max-width:75ch;
   opacity:0.95;
+  margin:0;
 }
+.cta-row{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+  margin-top:18px;
+}
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  text-decoration:none;
+  font-weight:800;
+  font-size:14px;
+  padding:12px 16px;
+  border-radius:12px;
+  border:1px solid transparent;
+}
+.btn-primary{
+  background:linear-gradient(135deg,var(--green2),var(--green));
+  color:white;
+  box-shadow:0 12px 26px rgba(31,138,99,0.22);
+}
+.btn-ghost{
+  background:rgba(255,255,255,0.12);
+  border-color:rgba(255,255,255,0.18);
+  color:white;
+}
+.btn:hover{opacity:0.95;}
 
+/* LAYOUT */
 .section{
   max-width:1100px;
   margin:auto;
-  padding:100px 20px;
+  padding:84px 18px;
 }
-
 .section h2{
   color:var(--green);
-  margin-bottom:20px;
+  margin:0 0 14px;
+  letter-spacing:-0.2px;
 }
-
-.alt{
-  background:white;
+.lead{
+  color:var(--muted);
+  margin:0 0 22px;
+  max-width:85ch;
 }
-
 .grid{
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:40px;
+  gap:28px;
+  align-items:start;
+}
+.card{
+  background:var(--card);
+  padding:28px;
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+}
+.card h3{
+  margin:0 0 10px;
+  color:var(--green);
+  letter-spacing:-0.2px;
+}
+.card p{margin:0; color:#2b2f2d;}
+.pills{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-top:16px;
+}
+.pill{
+  padding:8px 10px;
+  border-radius:999px;
+  font-weight:800;
+  font-size:12px;
+  background:rgba(31,138,99,0.10);
+  color:var(--green);
+  border:1px solid rgba(31,138,99,0.16);
+}
+
+/* MEDIA CARD */
+.media{
+  padding:0;
+  overflow:hidden;
+}
+.media img{
+  width:100%;
+  height:100%;
+  max-height:420px;
+  object-fit:cover;
+  display:block;
+}
+
+/* SMALL NOTE */
+.note{
+  margin-top:14px;
+  color:var(--muted);
+  font-size:13px;
+}
+
+/* FOOTER */
+.footer{
+  background:linear-gradient(135deg,var(--green),#08241b);
+  color:white;
+  padding:34px 18px;
+}
+.footer-inner{
+  max-width:1100px;
+  margin:auto;
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  gap:12px;
   align-items:center;
 }
-
-.grid img{
-  width:100%;
-  border-radius:14px;
-}
-
-.card{
-  background:white;
-  padding:35px;
-  border-radius:14px;
-  box-shadow:0 12px 35px rgba(0,0,0,0.08);
-}
-
-.button{
-  display:inline-block;
-  padding:14px 28px;
-  background:linear-gradient(135deg,var(--green2),var(--green));
-  color:white;
-  text-decoration:none;
-  border-radius:10px;
+.footer a{color:white;}
+.mini-support{
+  opacity:0.92;
   font-weight:700;
-  margin-top:20px;
+  font-size:13px;
 }
-
-.footer{
-  background:var(--green);
-  color:white;
-  text-align:center;
-  padding:40px 20px;
-}
+.mini-support b{opacity:1;}
 
 @media(max-width:900px){
   .grid{grid-template-columns:1fr;}
   .hero h1{font-size:36px;}
+  .hero{height:86vh;}
 }
 </style>
 </head>
@@ -157,98 +260,163 @@ body{
     <div class="logo">VÅGSBYGD GOLF-FELLESSKAP</div>
     <div>
       <a href="#om">Om oss</a>
-      <a href="#mal">Mål</a>
+      <a href="#hva">Hva vi gjør</a>
+      <a href="#mal">Vårt mål</a>
       <a href="#grasrot">Grasrot</a>
-      <a href="#vipps">Vipps</a>
       <a href="#kontakt">Kontakt</a>
     </div>
   </div>
 </div>
 
-<div class="hero">
+<header class="hero">
   <div class="hero-content">
-    <h1>Et inkluderende golfmiljø i Kristiansand</h1>
-    <p>Vi bygger fellesskap, mestring og golfglede – med lav terskel og høye ambisjoner.</p>
+    <div class="badge"><span class="dot"></span> Startet av unge – for unge • Kristiansand</div>
+    <h1>Golf skal være for flere.</h1>
+    <p>
+      Vågsbygd Golf-Fellesskap er en nyoppstartet forening som bygger et inkluderende miljø
+      for unge og unge voksne. Lav terskel, god stemning og ekte mestring – uansett nivå.
+    </p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="#kontakt">Bli med / ta kontakt</a>
+      <a class="btn btn-ghost" href="#grasrot">Støtt via Grasrot</a>
+    </div>
   </div>
-</div>
+</header>
 
-<div class="section" id="om">
+<section class="section" id="om">
   <h2>Hvem vi er</h2>
-  <p>
-    Vågsbygd Golf-Fellesskap er en nyoppstartet forening med fokus på inkludering.
-    Vi ønsker å gjøre golf mer tilgjengelig for flere – uavhengig av bakgrunn og erfaring.
+  <p class="lead">
+    Dette er et fellesskap bygget på én enkel tanke: Mange har lyst til å spille golf, men mangler folk å spille med,
+    føler seg “for ny”, eller tror man må være skikkelig god før man kan bli med. Det vil vi endre.
   </p>
-  <p>
-    Hos oss skal det være enkelt å bli med. Vi bygger et trygt og sosialt miljø hvor
-    både nye og erfarne spillere føler tilhørighet.
-  </p>
-</div>
 
-<div class="section alt" id="mal">
   <div class="grid">
-    <div>
-      <h2>Vårt mål</h2>
+    <div class="card">
+      <h3>Startet av unge – for unge</h3>
       <p>
-        Vårt mål er å senke terskelen for å starte med golf.
-        På sikt ønsker vi å bygge opp en utstyrspool med køller og nødvendig utstyr
-        som kan lånes av nyoppstartede spillere.
+        Vi er et nytt miljø startet av unge i Kristiansand, med mål om å gjøre golf mer tilgjengelig.
+        Hos oss skal det være trygt å være ny, og inspirerende å utvikle seg – uten press og uten “klikk”.
       </p>
-      <p>
-        Ingen skal føle at økonomi eller manglende utstyr står i veien for å prøve golf.
-      </p>
+      <div class="pills">
+        <div class="pill">Inkludering</div>
+        <div class="pill">Lav terskel</div>
+        <div class="pill">Utvikling</div>
+        <div class="pill">Fellesskap</div>
+      </div>
     </div>
-    <div>
-      <!-- Ingen overskrift over bildet her, kun bilde -->
-      <img src="community.jpg?v=1" alt="Golf fellesskap">
+
+    <div class="card">
+      <h3>Hva vi står for</h3>
+      <p>
+        Vi vil ha et miljø med god energi, respekt og ekte golfglede. Vi heier på mestring, ikke perfeksjon.
+        Du skal kunne komme alene og fortsatt føle at du hører til.
+      </p>
+      <div class="note">
+        Kort sagt: flere runder, flere venner, mer golf.
+      </div>
     </div>
   </div>
-</div>
+</section>
 
-<div class="section" id="grasrot">
-  <h2>Støtt oss gjennom Grasrotandelen</h2>
+<section class="section" id="hva">
+  <h2>Hva vi gjør</h2>
+  <p class="lead">
+    Vi bygger dette steg for steg. Målet er et aktivt miljø – ikke bare en nettside.
+  </p>
+
+  <div class="grid">
+    <div class="card">
+      <h3>Fellesrunder</h3>
+      <p>
+        Vi organiserer runder der folk kan bli kjent og spille sammen. Perfekt om du vil spille mer,
+        men mangler en fast golfgjeng.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Lavterskel aktiviteter</h3>
+      <p>
+        Vi vil ha aktiviteter som passer både nye og erfarne: alt fra “bli-med-runder” til små interne konkurranser
+        for de som liker litt utfordring.
+      </p>
+    </div>
+
+    <div class="card media">
+      <img src="community.jpg?v=2" alt="Golfmiljø og fellesskap">
+    </div>
+
+    <div class="card">
+      <h3>Et miljø som gjør deg bedre</h3>
+      <p>
+        Mange blir bedre av å spille mer – og av å spille med andre. Vi vil bygge en kultur der man deler tips,
+        støtter hverandre og feirer framgang.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="mal">
+  <h2>Vårt mål</h2>
+  <div class="grid">
+    <div class="card">
+      <h3>Golf tilgjengelig for alle</h3>
+      <p>
+        Vi ønsker å senke terskelen for å starte. På sikt vil vi bygge opp en <b>utstyrspool</b> med køller og basisutstyr
+        som kan lånes ut til nyoppstartede. Ingen skal stoppes av økonomi eller utstyr.
+      </p>
+      <div class="note">
+        Dette er langsiktig – men det er nøyaktig slike ting vi vil bygge.
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Et seriøst, men vennlig miljø</h3>
+      <p>
+        Vi vil være et fellesskap som er enkelt å bli med i – og lett å bli i.
+        Et miljø med tydelige rammer, god tone og plass til både nybegynnere og ambisiøse spillere.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="grasrot">
+  <h2>Grasrotandelen</h2>
+  <p class="lead">
+    Hvis du vil støtte oss, er Grasrotandelen den enkleste måten. Den koster deg ingenting ekstra – men betyr mye for oss.
+  </p>
+
   <div class="card">
+    <h3>Takk for at du hjelper oss å bygge dette</h3>
     <p>
-      Når du velger oss som din grasrotmottaker går en andel av Norsk Tippings overskudd
-      direkte til foreningen – uten at det koster deg noe ekstra.
-    </p>
-    <p>
-      Midlene brukes til aktiviteter, fellesskap og oppbygging av utstyr til utlån.
-      Hver registrering hjelper oss å bygge et sterkere og mer inkluderende golfmiljø.
+      Når du velger Vågsbygd Golf-Fellesskap som grasrotmottaker, går en andel av Norsk Tippings overskudd til foreningen.
+      Det bidrar til aktivitet, inkludering – og målet vårt om utstyr til utlån for nye spillere.
     </p>
 
-    <a class="button"
+    <a class="btn btn-primary"
        href="https://www.norsk-tipping.no/grasrotandelen/for-lag-og-foreninger/vervebrev/937162456#QRreader"
        target="_blank" rel="noopener">
-       Støtt oss via Grasrot
+      Støtt oss via Grasrot
     </a>
-  </div>
-</div>
 
-<div class="section alt" id="vipps">
-  <h2>Støtt oss på Vipps</h2>
-  <div class="grid">
-    <div>
-      <p>
-        Ønsker du å bidra direkte? Vipps et valgfritt beløp og støtt arbeidet vårt
-        med å bygge et inkluderende golfmiljø i Vågsbygd.
-      </p>
-      <p><strong>Vipps-nummer:</strong> #42400</p>
-    </div>
-    <div>
-      <img src="vipps-qr.png?v=1" alt="Vipps QR-kode">
+    <div class="note">
+      (På mobil åpner denne vanligvis Norsk Tipping-appen direkte.)
     </div>
   </div>
-</div>
+</section>
 
-<div class="section" id="kontakt">
+<section class="section" id="kontakt">
   <h2>Kontakt</h2>
-  <p>Har du spørsmål eller ønsker å bli med?</p>
-  <a class="button" href="mailto:victor@vgolf.no">victor@vgolf.no</a>
-</div>
+  <p class="lead">Vil du bli med, bidra, eller bare høre mer om opplegget? Send en e-post.</p>
+  <a class="btn btn-primary" href="mailto:victor@vgolf.no">victor@vgolf.no</a>
+</section>
 
-<div class="footer">
-  © 2026 Vågsbygd Golf-Fellesskap
-</div>
+<footer class="footer">
+  <div class="footer-inner">
+    <div><b>Vågsbygd Golf-Fellesskap</b> • Kristiansand</div>
+    <div class="mini-support">Støtt oss på Vipps: <b>#42400</b></div>
+    <div>© 2026 • <a href="mailto:victor@vgolf.no">victor@vgolf.no</a></div>
+  </div>
+</footer>
 
 </body>
 </html>
