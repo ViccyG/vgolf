@@ -70,23 +70,25 @@ body{
   content:"";
   position:absolute;
   inset:0;
-  background:linear-gradient(180deg, rgba(0,0,0,0.35), rgba(0,0,0,0.7));
+  background:linear-gradient(180deg, rgba(0,0,0,0.35), rgba(0,0,0,0.75));
 }
 
 .hero-content{
   position:relative;
   z-index:2;
-  max-width:800px;
+  max-width:860px;
   padding:0 20px;
 }
 
 .hero h1{
   font-size:48px;
-  margin:0 0 20px;
+  margin:0 0 16px;
 }
 
 .hero p{
   font-size:20px;
+  margin:0;
+  opacity:0.95;
 }
 
 .section{
@@ -129,8 +131,8 @@ body{
   background:linear-gradient(135deg,var(--green2),var(--green));
   color:white;
   text-decoration:none;
-  border-radius:8px;
-  font-weight:600;
+  border-radius:10px;
+  font-weight:700;
   margin-top:20px;
 }
 
@@ -155,7 +157,7 @@ body{
     <div class="logo">VÅGSBYGD GOLF-FELLESSKAP</div>
     <div>
       <a href="#om">Om oss</a>
-      <a href="#mal">Vårt mål</a>
+      <a href="#mal">Mål</a>
       <a href="#grasrot">Grasrot</a>
       <a href="#vipps">Vipps</a>
       <a href="#kontakt">Kontakt</a>
@@ -196,7 +198,8 @@ body{
       </p>
     </div>
     <div>
-      <img src="fellesskap.jpg" alt="Golf fellesskap">
+      <!-- Ingen overskrift over bildet her, kun bilde -->
+      <img src="community.jpg?v=1" alt="Golf fellesskap">
     </div>
   </div>
 </div>
@@ -210,11 +213,12 @@ body{
     </p>
     <p>
       Midlene brukes til aktiviteter, fellesskap og oppbygging av utstyr til utlån.
+      Hver registrering hjelper oss å bygge et sterkere og mer inkluderende golfmiljø.
     </p>
 
     <a class="button"
        href="https://www.norsk-tipping.no/grasrotandelen/for-lag-og-foreninger/vervebrev/937162456#QRreader"
-       target="_blank">
+       target="_blank" rel="noopener">
        Støtt oss via Grasrot
     </a>
   </div>
@@ -231,16 +235,14 @@ body{
       <p><strong>Vipps-nummer:</strong> #42400</p>
     </div>
     <div>
-      <img src="vipps-qr.png" alt="Vipps QR-kode">
+      <img src="vipps-qr.png?v=1" alt="Vipps QR-kode">
     </div>
   </div>
 </div>
 
 <div class="section" id="kontakt">
   <h2>Kontakt</h2>
-  <p>
-    Har du spørsmål eller ønsker å bli med?
-  </p>
+  <p>Har du spørsmål eller ønsker å bli med?</p>
   <a class="button" href="mailto:victor@vgolf.no">victor@vgolf.no</a>
 </div>
 
