@@ -1,40 +1,275 @@
 <!DOCTYPE html>
 <html lang="no">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Vågsbygd Golf-Fellesskap</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vågsbygd Golf-Fellesskap</title>
+  <style>
+    :root{
+      --green:#0f3d2e;
+      --bg:#f4f6f5;
+      --text:#1f1f1f;
+      --card:#ffffff;
+      --muted:#5a5a5a;
+      --radius:14px;
+    }
 
-<style>
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #f4f6f5;
-    color: #222;
-}
+    body{
+      margin:0;
+      font-family: Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
 
-.hero {
-    background-image: url('banner.jpg');
-    background-size: cover;
-    background-position: center;
-    height: 500px;
-    position: relative;
-}
+    /* Top bar */
+    .topbar{
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(255,255,255,0.9);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+    .topbar-inner{
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 10px 16px;
+      display:flex;
+      align-items:center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .brand{
+      font-weight: 800;
+      color: var(--green);
+      letter-spacing: 0.2px;
+      font-size: 16px;
+      white-space: nowrap;
+    }
+    .nav{
+      display:flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+    .nav a{
+      text-decoration:none;
+      color: var(--muted);
+      font-weight: 600;
+      font-size: 14px;
+      padding: 8px 10px;
+      border-radius: 10px;
+    }
+    .nav a:hover{
+      background: rgba(15,61,46,0.08);
+      color: var(--green);
+    }
 
-.overlay {
-    background: rgba(0,0,0,0.35);
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    color: white;
-}
+    /* Banner shown as image (no cropping) */
+    .banner-wrap{
+      background: #0b2b21;
+      padding: 18px 0;
+    }
+    .banner-inner{
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+    .banner-card{
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .banner-img{
+      display:block;
+      width:100%;
+      height: auto;
+      /* behold hele banneret */
+    }
 
-.overlay h1 {
-    font-size: 3em;
-    margin: 0;
-}
+    /* Content */
+    .container{
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 28px 16px 64px;
+    }
+
+    .headline{
+      margin: 18px 0 18px;
+      font-size: 28px;
+      line-height: 1.2;
+      color: var(--green);
+      letter-spacing: 0.2px;
+    }
+    .sub{
+      margin: 0 0 18px;
+      color: var(--muted);
+      max-width: 70ch;
+    }
+
+    .cta-row{
+      display:flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin: 16px 0 26px;
+    }
+    .btn{
+      display:inline-block;
+      padding: 12px 16px;
+      border-radius: 12px;
+      text-decoration:none;
+      font-weight: 700;
+      font-size: 14px;
+    }
+    .btn-primary{
+      background: var(--green);
+      color: #fff;
+    }
+    .btn-primary:hover{ opacity: 0.92; }
+    .btn-ghost{
+      background: rgba(15,61,46,0.10);
+      color: var(--green);
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 16px;
+      margin-top: 10px;
+    }
+    .card{
+      grid-column: span 6;
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 18px 18px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+      border: 1px solid rgba(0,0,0,0.06);
+    }
+    .card h2{
+      margin: 0 0 8px;
+      color: var(--green);
+      font-size: 18px;
+    }
+    .card p{ margin: 0; color: #2b2b2b; }
+    .note{
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 8px;
+    }
+
+    /* Sections */
+    .section{
+      margin-top: 18px;
+      padding-top: 18px;
+    }
+
+    footer{
+      margin-top: 36px;
+      padding: 26px 16px;
+      text-align:center;
+      color: rgba(255,255,255,0.9);
+      background: var(--green);
+    }
+
+    /* Responsive */
+    @media (max-width: 820px){
+      .card{ grid-column: span 12; }
+      .headline{ font-size: 24px; }
+      .nav{ gap: 8px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">Vågsbygd Golf-Fellesskap</div>
+      <div class="nav">
+        <a href="#om">Om oss</a>
+        <a href="#aktiviteter">Aktiviteter</a>
+        <a href="#grasrot">Grasrot</a>
+        <a href="#bli-med">Bli med</a>
+        <a href="#kontakt">Kontakt</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="banner-wrap">
+    <div class="banner-inner">
+      <div class="banner-card">
+        <!-- Viktig: filnavnet må være nøyaktig banner.jpg -->
+        <img class="banner-img" src="banner.jpg" alt="Vågsbygd Golf-Fellesskap banner">
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <h1 class="headline">Et lokalt golfmiljø for unge i Kristiansand</h1>
+    <p class="sub">
+      Vi bygger et inkluderende fellesskap med lav terskel for å bli med – og rom for både sosialt spill og konkurranse.
+      Målet er å gjøre golf mer tilgjengelig, og skape et miljø der folk faktisk møtes og spiller.
+    </p>
+
+    <div class="cta-row">
+      <a class="btn btn-primary" href="#bli-med">Bli med</a>
+      <a class="btn btn-ghost" href="#grasrot">Støtt via Grasrot</a>
+    </div>
+
+    <div class="grid">
+      <div class="card" id="om">
+        <h2>Om oss</h2>
+        <p>
+          Vågsbygd Golf-Fellesskap er en lokal forening som jobber for å gjøre golf mer tilgjengelig – spesielt for unge spillere.
+          Vi ønsker et miljø der nye blir tatt godt imot, og de som vil satse får mulighet til å utvikle seg.
+        </p>
+      </div>
+
+      <div class="card" id="aktiviteter">
+        <h2>Aktiviteter</h2>
+        <p>
+          Fellesrunder, sosiale treff og interne turneringer gjennom sesongen. Vi legger opp til både lav terskel og litt konkurranse
+          for de som vil.
+        </p>
+        <div class="note">Tips: legg inn “Neste runde” her når dere har dato klar.</div>
+      </div>
+
+      <div class="card" id="grasrot">
+        <h2>Grasrotandelen</h2>
+        <p>
+          Når du velger oss som grasrotmottaker går en andel av Norsk Tippings overskudd direkte til foreningen – uten at det koster deg ekstra.
+          Midlene brukes til aktiviteter, turneringer, utstyr og utvikling av miljøet.
+        </p>
+        <div class="note">Tips: legg inn QR-kode og organisasjonsnummer her.</div>
+      </div>
+
+      <div class="card" id="bli-med">
+        <h2>Bli med</h2>
+        <p>
+          Vil du bli en del av miljøet? Send oss en melding, så får du info om opplegg, aktiviteter og hvordan du blir med videre.
+        </p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="mailto:kontakt@vgolf.no">Send e-post</a>
+        </div>
+      </div>
+
+      <div class="card" id="kontakt">
+        <h2>Kontakt</h2>
+        <p>
+          E-post: <a href="mailto:kontakt@vgolf.no">kontakt@vgolf.no</a><br>
+          (Legg gjerne inn Instagram / Facebook her når dere vil)
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    © 2026 Vågsbygd Golf-Fellesskap
+  </footer>
+
+</body>
+</html>}
 
 .section {
     max-width: 1000px;
